@@ -1,0 +1,20 @@
+services:
+  express-app:
+    image: smlltt797/express-app-docker-mooc-sl:latest
+    labels:
+      - "wud.watch=true"
+      - "wud.trigger.include=docker.auto"
+    ports:
+      - "8080:8080"
+
+  whatsupdocker:
+    image: getwud/wud
+    container_name: wud
+    environment:
+      - WUD_WATCHER_LOCAL_WATCHBYDEFAULT=false
+      - WUD_TRIGGER_DOCKER_AUTO_PRUNE=true
+      - WUD_PORT=3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "3001:3000"
