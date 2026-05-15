@@ -1,9 +1,12 @@
 services:
   express-app:
     image: smlltt797/express-app-docker-mooc-sl:latest
+    container_name: express-app
     labels:
-      - "wud.watch=true"
-      - "wud.trigger.include=docker.auto"
+      - 'wud.watch=true'
+      - 'wud.tag.include=latest'      # Tell WUD to watch the 'latest' tag
+      - 'wud.watch.digest=true'       # Track by digest (hash) instead of version
+      - 'wud.trigger.include=docker.auto'
     ports:
       - "8080:8080"
 
