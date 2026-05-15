@@ -1,6 +1,6 @@
 FROM node:16
 
-COPY express-app .
+COPY . .
 
 RUN npm install
 
